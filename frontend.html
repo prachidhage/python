@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Simple Frontend</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <h1>Simplee Frontend</h1>
+    <button id="getDataButton">Get Data</button>
+    <div id="dataContainer"></div>
+
+    <script>
+        $(document).ready(function() {
+            $('#getDataButton').click(function() {
+                $.ajax({
+                    url: '/api/data',
+                    type: 'GET',
+                    success: function(response) {
+                        $('#dataContainer').text(response.message);
+                    },
+                    error: function(xhr, status, error) {
+                        console.log('Error:', error);
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
